@@ -16,22 +16,16 @@ The trained model and vectorizer are included as `model.pkl` and `vectorizer.pkl
 1. Install the required packages:
 
    ```bash
-   python -m pip install streamlit nltk scikit-learn
+   python -m pip install -r requirements.txt
    ```
 
-2. Download the NLTK resources used for tokenization and stop words:
-
-   ```bash
-   python -c "import nltk; nltk.download('punkt'); nltk.download('punkt_tab'); nltk.download('stopwords')"
-   ```
-
-3. Start the app from the project directory:
+2. Start the app from the project directory:
 
    ```bash
    streamlit run app.py
    ```
 
-4. Open the local URL printed by Streamlit, enter a message, and select **Predict**.
+3. Open the local URL printed by Streamlit, enter a message, and select **Predict**. The app downloads its required NLTK resources on first run if they are missing.
 
 ## Project files
 

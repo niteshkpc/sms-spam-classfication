@@ -10,6 +10,24 @@ from nltk.stem import PorterStemmer
 ps = PorterStemmer()
 
 
+@st.cache_resource
+def ensure_nltk_data():
+    resources = {
+        "tokenizers/punkt": "punkt",
+        "tokenizers/punkt_tab/english": "punkt_tab",
+        "corpora/stopwords": "stopwords",
+    }
+    for path, package in resources.items():
+        try:
+            nltk.data.find(path)
+        except LookupError:
+            if not nltk.download(package, quiet=True):
+                raise RuntimeError(f"Unable to download required NLTK resource: {package}")
+
+
+ensure_nltk_data()
+
+
 def transform_text(text):
     # 1. Lowercase the text
     text = text.lower()
